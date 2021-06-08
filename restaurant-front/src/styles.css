@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+/* https://www.wallpaperup.com/uploads/wallpapers/2015/07/24/761368/c2177ff23f862b515dd9f1517b011727.jpg */
+html, body {     
+    margin: 0;    
+    height: 100%;
+    background-image: url(".\assets\images\backgroundLoginRegistration.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+ }
