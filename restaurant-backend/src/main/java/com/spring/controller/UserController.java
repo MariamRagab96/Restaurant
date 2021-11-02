@@ -1,7 +1,7 @@
-package com.spring.code.controller;
+package com.spring.controller;
 
-import com.spring.code.model.User;
-import com.spring.code.service.UserService;
+import com.spring.model.User;
+import com.spring.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
