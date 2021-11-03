@@ -14,11 +14,27 @@ public class UserService {
 
     public void createUser(User user) {
         userRepository.save(user);
+        System.out.println("User is added Successfully");
     }
 
     public List<User> getUsers() {
-        List<User> listOfUsers = (List<User>) (userRepository.findAll());
+        List<User> listOfUsers = userRepository.findAll();
         return listOfUsers;
 
+    }
+
+    public void deleteUser(long id) {
+        userRepository.deleteById(id);
+        System.out.println("User is deleted Successfully");
+    }
+
+    public void updateUser(User user) {
+        userRepository.updateUserById(user.getUserName(), user.getEmail(), user.getPhone(),
+                user.getPassword(), user.getCreditLimit(), user.getRole(), user.getId());
+        System.out.println("User is updated Successfully");
+    }
+
+    public User getUser(long id) {
+        return userRepository.getById(id);
     }
 }

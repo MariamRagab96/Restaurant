@@ -15,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Setter
 @Getter
 @ToString
@@ -25,15 +24,15 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 @Table(name = "category")
-public class Category extends BaseEntity implements Serializable{
+public class Category extends BaseEntity implements Serializable {
 
-     @Column(name = "name")
+    @Column(name = "name")
     private String name;
 
     @Column(name = "description")
     private String description;
-    
+
     //mappedBy take the name of property inside Product class
-    @OneToMany(mappedBy = "category" ,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private Set<Product> products;
 }

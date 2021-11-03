@@ -26,8 +26,8 @@ public class User extends BaseEntity implements Serializable{
     @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "mail")
-    private String mail;
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "phone")
     private String phone;
@@ -36,7 +36,7 @@ public class User extends BaseEntity implements Serializable{
     private String password;
 
     @Column(name = "credit_limit")
-    private String creditLimit;
+    private int creditLimit;
 
     @Column(name = "role")
     private String role;

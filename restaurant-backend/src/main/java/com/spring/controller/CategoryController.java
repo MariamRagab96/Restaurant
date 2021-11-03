@@ -2,28 +2,30 @@ package com.spring.controller;
 
 import com.spring.model.Category;
 import com.spring.service.CategoryService;
-import java.util.List;
-import java.util.Optional;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PathVariable;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-@RequiredArgsConstructor
-@RestController
+@Controller
 public class CategoryController {
 
-    private final CategoryService categoryService;
-
-    @RequestMapping("/categories")
-    public List<Category> getAll() {
-        return categoryService.getAll();
+    @Autowired
+    private CategoryService categoryService;
+    
+    @RequestMapping("/")
+    public String myForm() {
+        return "myForm";
     }
 
-    @RequestMapping("/categories/{id}")
-    public Category getById(@PathVariable long id) {
-        return categoryService.getById(id);
+    @RequestMapping("/proccesMyForm")
+    public String home(HttpServletRequest httpServletRequest, Model model) {
+        String id = httpServletRequest.getParameter("id");
+        Category category = categoryService.getById(Long.parseLong(id));
+       
+        model.addAttribute("category", category.getName());
+        return "home";
     }
-
+    
 }
