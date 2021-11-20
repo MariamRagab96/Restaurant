@@ -2,6 +2,7 @@ package com.spring.service;
 
 import com.spring.model.User;
 import com.spring.repository.UserRepository;
+import com.spring.utility.UserValidation;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,9 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     public void createUser(User user) {
+        user.setRole("user");
         userRepository.save(user);
         System.out.println("User is added Successfully");
     }
@@ -37,4 +40,9 @@ public class UserService {
     public User getUser(long id) {
         return userRepository.getById(id);
     }
+
+    public User getUser(String userName, String password) {
+        return userRepository.findByUserNameAndPassword(userName, password);
+    }
+
 }

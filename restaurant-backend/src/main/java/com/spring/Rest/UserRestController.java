@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,7 +19,7 @@ public class UserRestController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/user")
+    @PostMapping("/user/add")
     public void createUser(@RequestBody User user) {
         userService.createUser(user);
     }
@@ -33,7 +34,19 @@ public class UserRestController {
         return userService.getUser(id);
     }
 
-    @DeleteMapping("user/{id}")
+    @GetMapping("/user/search")
+    public User getUser(@RequestParam String email, @RequestParam String password) {
+        System.out.println(userService.getUser(email, password));
+        return userService.getUser(email, password);
+    }
+
+//    @GetMapping("/user/{email}")
+//    public User getUser(@PathVariable String email) {
+//        System.out.println(userService.getUser(email));
+//        return userService.getUser(email);
+//    }
+
+    @DeleteMapping("users/{id}")
     public void deleteUser(@PathVariable long id) {
         userService.deleteUser(id);
     }

@@ -8,16 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+//@Controller
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
     
-    @RequestMapping("/")
-    public String myForm() {
-        return "myForm";
-    }
+   
 
     @RequestMapping("/proccesMyForm")
     public String home(HttpServletRequest httpServletRequest, Model model) {

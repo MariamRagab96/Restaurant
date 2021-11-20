@@ -24,4 +24,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
             @Param("role") String role,
             @Param("id") long id);
 
+    public User findByUserNameAndPassword(String userName, String password);
+
+    public User findByUserName(String userName);
+    
+     public User findByEmail(String email);
+
 }
