@@ -1,9 +1,11 @@
 package com.spring.service;
 
+import com.spring.dto.UserDTO;
+import com.spring.mapper.UserMapper;
 import com.spring.model.User;
 import com.spring.repository.UserRepository;
-import com.spring.utility.UserValidation;
 import java.util.List;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,8 +43,13 @@ public class UserService {
         return userRepository.getById(id);
     }
 
+    public User getUser(UserDTO userDTO) {
+        UserMapper userMapper = Mappers.getMapper(UserMapper.class);
+        User user = userMapper.userDtoToUser(userDTO);
+        return userRepository.findByUserNameAndPassword(user.getUserName(), user.getPassword());
+    }
+
     public User getUser(String userName, String password) {
         return userRepository.findByUserNameAndPassword(userName, password);
     }
-
 }

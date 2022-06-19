@@ -1,8 +1,10 @@
 package com.spring.Rest;
 
+import com.spring.dto.UserDTO;
 import com.spring.model.User;
 import com.spring.service.UserService;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +22,7 @@ public class UserRestController {
     private UserService userService;
 
     @PostMapping("/user/add")
-    public void createUser(@RequestBody User user) {
+    public void createUser(@Valid @RequestBody  User user) {
         userService.createUser(user);
     }
 
@@ -35,16 +37,16 @@ public class UserRestController {
     }
 
     @GetMapping("/user/search")
-    public User getUser(@RequestParam String email, @RequestParam String password) {
-        System.out.println(userService.getUser(email, password));
-        return userService.getUser(email, password);
+    public User getUser(@RequestParam String userName, @RequestParam String password) {
+        System.out.println(userService.getUser(userName, password));
+        return userService.getUser(userName, password);
     }
 
-//    @GetMapping("/user/{email}")
-//    public User getUser(@PathVariable String email) {
-//        System.out.println(userService.getUser(email));
-//        return userService.getUser(email);
-//    }
+    @PostMapping("/user/search")
+    public User getUser1(@RequestBody UserDTO userDTO) {
+        System.out.println(userDTO);
+        return userService.getUser(userDTO);
+    }
 
     @DeleteMapping("users/{id}")
     public void deleteUser(@PathVariable long id) {
@@ -52,7 +54,7 @@ public class UserRestController {
     }
 
     @PutMapping("/user")
-    public void updateUser(@RequestBody User user) {
+    public void updateUser(@Valid @RequestBody User user) {
         userService.updateUser(user);
     }
 

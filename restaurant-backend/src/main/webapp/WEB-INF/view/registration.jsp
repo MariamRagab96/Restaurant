@@ -50,70 +50,77 @@
                                  font-size: 200%;
                                  font-weight: bold">Register</div>
                             <div class="card-body">
-                                <form:form action="homeFromregistration" method="post" modelAttribute="user">
+                                <form:form action="homeFromRegistration" method="post" modelAttribute="user">
                                     <div class="form-group row">
-                                        <label for="userName" class="col-md-5 col-form-label text-md-right">UserName</label>
+                                        <label for="userName" class="col-md-5 col-form-label text-md-right">UserName *</label>
                                         <div class="col-md-6">
-                                            <form:input type="text" id="userName" class="form-control" path="userName"/>
+                                            <form:input type="text" id="userName" class="form-control" path="userName" cssClass="input"/>
+                                            <form:errors path="userName" cssClass="error"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="email" class="col-md-5 col-form-label text-md-right">Email</label>
+                                        <label for="email" class="col-md-5 col-form-label text-md-right">Email *</label>
                                         <div class="col-md-6">
-                                            <form:input type="text" id="email" class="form-control" path="email" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="UserName" class="col-md-5 col-form-label text-md-right">phone</label>
-                                            <div class="col-md-6">
-                                                <form:input type="text" id="phone" class="form-control" path="phone" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="password" class="col-md-5 col-form-label text-md-right">password</label>
-                                                <div class="col-md-6">
-                                                    <form:input type="password" id="password" class="form-control" path="password" name="pass" />
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label for="present_address" class="col-md-5 col-form-label text-md-right">ConfirmPass</label>
-                                                    <div class="col-md-6">
-                                                        <form:input type="password" id="present_address" class="form-control" path=""/>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="present_address" class="col-md-5 col-form-label text-md-right">Credit Limit</label>
-                                                        <div class="col-md-6">
-                                                            <form:input type="text" id="present_address" class="form-control" path="creditLimit" value=""/>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class=" form-group col-md-6 offset-md-4">
-                                                            <input type="submit" value="Sing up" class="btn btn-warning login_btn">
-                                                        </div>
-                                                        <%--                            <div class="col-md-6 offset-md-4">--%>
-                                                        <%--                                <button type="submit" class="btn btn-primary">--%>
-                                                        <%--                                    Register--%>
-                                                        <%--                                </button>--%>
-                                                        <%--                            </div>--%>
-
-                                                        </form:form>
-
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <form:input type="text" id="email" class="form-control" path="email" cssClass="input" />
+                                            <form:errors path="email" cssClass="error"/>
                                         </div>
                                     </div>
 
-                                </main>
+                                    <div class="form-group row">
+                                        <label for="UserName" class="col-md-5 col-form-label text-md-right">phone *</label>
+                                        <div class="col-md-6">
+                                            <form:input type="text" id="phone" class="form-control" path="phone" cssClass="input" />
+                                            <form:errors path="phone" cssClass="error"/>
+                                        </div>
+                                    </div>
 
-                                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-                                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-                                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-                            </body>
-                        </html>
+                                    <div class="form-group row">
+                                        <label for="password" class="col-md-5 col-form-label text-md-right">password *</label>
+
+                                        <div class="col-md-6">
+                                            <form:input type="password" id="password" class="form-control" cssClass="input" path="password" name="pass" />
+                                            <form:errors path="password" cssClass="error"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="present_address" class="col-md-5 col-form-label text-md-right">ConfirmPass *</label>
+                                        <div class="col-md-6">
+                                            <form:input type="password" id="confirmPassword" class="form-control" cssClass="input" path=""/>
+                                            <%--<form:errors path="userName" cssClass="error"/>--%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="present_address" class="col-md-5 col-form-label text-md-right">Credit Limit *</label>
+                                        <div class="col-md-6">
+                                            <form:input  id="creditLimit" class="form-control" path="creditLimit" cssClass="input" />
+                                            <form:errors path="creditLimit" cssClass="error"/>
+                                        </div>
+                                    </div>
+
+                                    <div class=" form-group col-md-6 offset-md-4">
+                                        <input type="submit" value="Sing up" class="btn btn-warning login_btn">
+                                    </div>
+                                    <%--                            <div class="col-md-6 offset-md-4">--%>
+                                    <%--                                <button type="submit" class="btn btn-primary">--%>
+                                    <%--                                    Register--%>
+                                    <%--                                </button>--%>
+                                    <%--                            </div>--%>
+
+                                </form:form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </body>
+</html>

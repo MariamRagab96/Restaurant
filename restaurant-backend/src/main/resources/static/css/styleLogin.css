@@ -31,7 +31,7 @@ html,body{
 }
 .message{
     color: #FFC312;
-  align-content: center;
+    align-content: center;
 }
 .social_icon span:hover{
     color: white;
@@ -91,3 +91,9 @@ input:focus{
 .links a{
     margin-left: 4px;
 }
+
+
+a:link {color: #FFC312;}  
+a:visited {color: #FFC312;}  
+a:hover {color: white}  
+a:active {color:  #FFC312;}  

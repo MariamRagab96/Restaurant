@@ -2,15 +2,16 @@ package com.spring.controller;
 
 import com.spring.model.User;
 import com.spring.service.UserService;
-import com.spring.utility.UserValidation;
-import javax.servlet.http.HttpServletRequest;
+import com.spring.utility.validation.user.UserValidation;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -28,27 +29,26 @@ public class UserController {
     }
 
     @PostMapping("/homeFromLogin")
-    public String getUserUsingUserNameAndPassword(HttpServletRequest httpServletRequest, Model model) {
-        String userName = httpServletRequest.getParameter("userName");
-        String password = httpServletRequest.getParameter("password");
+    public String getUserUsingUserNameAndPassword(@RequestParam("username") String userName,
+            @RequestParam("password") String password, Model model) {
         String message = userValidation.handledMessageOnLoginPage(userService.getUser(userName, password));
         System.out.println(message);
         model.addAttribute("message", message);
-        if (message != "") {
-            return "login";
-        }
-        return "home";
+        return message != "" ? "login" : "home";
     }
 
-    
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("user", new User());
         return "registration";
     }
 
-    @PostMapping("/homeFromregistration")
-    public String createUser(@ModelAttribute("user") User user) {
+    @PostMapping("/homeFromRegistration")
+    public String createUser(@Valid @ModelAttribute("user") @RequestBody User user, BindingResult bindingResult) {
+        System.out.println("bindingResult | " + bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
         userService.createUser(user);
         return "home";
     }

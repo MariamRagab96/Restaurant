@@ -15,8 +15,8 @@ body{
     color:  #FFC312;
 
 } label{
-      color: #FFC312;
-  }
+    color: #FFC312;
+}
 
 .navbar-laravel
 {
@@ -66,4 +66,16 @@ body{
 .login_btn:hover{
     color: black;
     background-color: white;
+}
+
+.error{
+    color: #FFC312;
+    background-color: rgba(0,0,0,0.5) !important;
+    display: inline-block; 
+}
+.col-md-6{
+     white-space: nowrap;
+}
+.input{
+   display: inline-block;  
 }

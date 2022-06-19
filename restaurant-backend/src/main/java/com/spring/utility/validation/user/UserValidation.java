@@ -1,4 +1,4 @@
-package com.spring.utility;
+package com.spring.utility.validation.user;
 
 import com.spring.model.User;
 import com.spring.repository.UserRepository;
@@ -13,7 +13,7 @@ public class UserValidation {
     }
 
     public String handledMessageOnLoginPage(User user) {
-        return isUserExist(user) ? "" : "invaled User , Please try agin !";
+        return isUserExist(user) ? "" : "invaled User name or password , Please try agin !";
 
     }
 
